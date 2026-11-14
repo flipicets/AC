@@ -1,11 +1,13 @@
 package com.example.ac;
 
+import javafx.scene.control.Label;
+
 public class FinalFefo extends AutoClicker{
 
     private int qntdAtaques;
 
-    public FinalFefo(int poderClique, String nome){
-        super(poderClique, nome);
+    public FinalFefo(int poderClique, String nome, Label vida){
+        super(poderClique, nome, vida);
         this.qntdAtaques = 1;
     }
 

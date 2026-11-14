@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
    <children>
       <AnchorPane prefHeight="436.0" prefWidth="600.0">
          <children>
-            <Button fx:id="butao" layoutX="221.0" layoutY="39.0" mnemonicParsing="false" onAction="#aChinaButoooo" prefHeight="152.0" prefWidth="159.0" text="Button" />
+            <Label alignment="CENTER" layoutX="42.0" layoutY="14.0" prefHeight="17.0" prefWidth="512.0" text="Vida" />
+            <ProgressBar layoutX="25.0" layoutY="45.0" prefHeight="18.0" prefWidth="552.0" progress="1.0" />
+            <Button fx:id="invocarThread" layoutX="254.0" layoutY="110.0" mnemonicParsing="false" onAction="#invocarThread" text="Invocar Thread" />
+            <Label fx:id="vida" alignment="CENTER" layoutX="-1.0" layoutY="72.0" prefHeight="17.0" prefWidth="600.0" text="INSIRA VIDA" />
+            <ListView fx:id="listaUpgrades" layoutX="39.0" layoutY="158.0" prefHeight="200.0" prefWidth="526.0" />
          </children>
       </AnchorPane>
    </children>
