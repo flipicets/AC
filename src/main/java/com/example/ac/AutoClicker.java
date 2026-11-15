@@ -1,6 +1,6 @@
 package com.example.ac;
 
-public abstract class AutoClicker{
+public abstract class AutoClicker extends Atributo{
 
     private int poderClique;
     private String nome;
@@ -13,7 +13,6 @@ public abstract class AutoClicker{
     public int getPoderClique(){
         return this.poderClique;
     }
-
 
 }
 
