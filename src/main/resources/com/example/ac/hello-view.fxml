@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
    <children>
       <AnchorPane prefHeight="691.0" prefWidth="603.0">
          <children>
@@ -33,5 +34,6 @@
             <Button fx:id="farmarAura" layoutX="43.0" layoutY="512.0" mnemonicParsing="false" onAction="#farmarAura" prefHeight="69.0" prefWidth="520.0" text="Farmar Aura" />
          </children>
       </AnchorPane>
+      <Canvas fx:id="canvas" height="368.0" width="602.0" />
    </children>
 </VBox>

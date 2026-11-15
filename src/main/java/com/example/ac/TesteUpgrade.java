@@ -8,7 +8,8 @@ public class TesteUpgrade extends Upgrade{
 		super("Link furry",
 			  "furry é tudo rico pqp mais dinero",
 			  "images/link_pateta.png",
-			  15.0);
+			  15.0,
+			  new Renderable("images/link_pateta-nobg.png", 300, 300));
 	}
 	
 	@Override
@@ -18,6 +19,7 @@ public class TesteUpgrade extends Upgrade{
 			gs.setBufunfaMultiplier(gs.getBufunfaMultiplier() + 0.2);
 			gs.setBufunfa(gs.getBufunfa().doubleValue() - this.preco.doubleValue());
 			this.setPreco(getPreco() + 6);
+			registrarCompra();
 		} else {
 			System.out.println("Não há money");
 		}

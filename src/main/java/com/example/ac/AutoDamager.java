@@ -14,7 +14,8 @@ public class AutoDamager extends Upgrade{
 		super("Cesar Pateta", 
 			  "kkkkk esse cesar kkkk vai tomando adrian",
 			  "images/cesar_pateta.jpg",
-			  10.0);
+			  10.0,
+			  new Renderable("images/cesar_pateta-nobg.png", 300,300));
 	}
 	
 	@Override
@@ -24,6 +25,7 @@ public class AutoDamager extends Upgrade{
 			gs.passiveDamage += 1;
 			gs.setBufunfa(gs.getBufunfa().doubleValue() - this.preco.doubleValue());
 			this.setPreco(getPreco() + 13);
+			registrarCompra();
 		} else {
 			System.out.println("Não há money");
 		}
