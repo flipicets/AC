@@ -1,18 +1,17 @@
 package com.example.ac;
 
-public abstract class AutoClicker extends Atributo{
+public abstract class AutoClicker extends Thread implements Atributo{
 
-    private int poderClique;
-    private String nome;
+    protected int poderClique;
+    protected String nome;
+    protected Adrian adrian;
 
-    public AutoClicker(int poderClique, String nome) {
+    public AutoClicker(int poderClique, String nome, Adrian adrian) {
         this.poderClique = poderClique;
         this.nome = nome;
+        this.adrian= adrian;
     }
 
-    public int getPoderClique(){
-        return this.poderClique;
-    }
-
+    protected abstract int ataque();
 }
 

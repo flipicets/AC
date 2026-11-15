@@ -1,26 +1,48 @@
 package com.example.ac;
+import java.util.Random;
 
 public class Mariestelar extends AutoClicker{
-    private double velAtaque;
-    private double dano;
-    private double cooldown;
+    private int cooldown;
+    private int nivelChuvaE;
 
-    public Mariestelar(int poderClique, String nome) {
-        super(poderClique, nome);
+
+
+    Random random = new Random();
+
+    public Mariestelar(int poderClique, String nome, Adrian adrian) {
+        super(poderClique, nome, adrian);
+        this.cooldown= 8000; //milisegundos
+        this.nivelChuvaE = 1;
+
     }
 
     @Override
-    protected void aumentarDano(double multiplicador) {
-        this.dano *= multiplicador;
+    protected int ataque() {
+        return random.nextInt(20,100)*nivelChuvaE;
     }
 
     @Override
-    protected void aumentarVelAtaque(double multiplicador) {
-        this.velAtaque *= multiplicador;
+    public void aumentarDano(int multiplicador) {
+        this.poderClique *= multiplicador;
     }
 
     @Override
-    protected void diminuirCooldawn(double multiplicador) {
-        this.cooldown *= multiplicador;
+    public void diminuirCooldawn(int multiplicador) {
+        this.cooldown -= cooldown * multiplicador;
+    }
+
+    public void uparChuvaE(){
+        this.nivelChuvaE+=1;
+    }
+
+    public void run() {
+        try {
+            while (true){
+                adrian.levarDano(ataque());
+                Thread.sleep(cooldown);
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
