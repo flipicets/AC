@@ -15,8 +15,8 @@ public class UpgradeCellController {
     @FXML private Label descricao;
 
     private Runnable acao;
-
-    public void configurar(Upgrade upgrade, Runnable acao) {
+    
+    public void configurar(Upgrade upgrade) {
         nome.setText(upgrade.getNome());
         descricao.setText(upgrade.getDescricao());
         imagem.setImage(new Image(
@@ -28,7 +28,7 @@ public class UpgradeCellController {
             )
         );
 
-        this.acao = acao;
+        this.acao = upgrade.acao;
     }
 
     @FXML

@@ -4,6 +4,7 @@ public class Upgrade {
 	public String nome;
 	public String descricao;
 	public String imagem;
+	public Runnable acao;
 	
 	public String getNome() {
 		return nome;
@@ -24,12 +25,11 @@ public class Upgrade {
 		this.imagem = imagem;
 	}
 	
-	public Upgrade(String nome, String descricao, String imagem) {
+	public Upgrade(String nome, String descricao, String imagem, Runnable acao) {
 		super();
 		this.nome = nome;
 		this.descricao = descricao;
 		this.imagem = imagem;
+		this.acao = acao;
 	}
-	
-	
 }

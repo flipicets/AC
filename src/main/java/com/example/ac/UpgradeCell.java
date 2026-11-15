@@ -21,24 +21,21 @@ public class UpgradeCell extends ListCell<Upgrade> {
             controller = loader.getController();
 
         } catch (IOException e) {
+        	System.out.println("fodeu");
             throw new RuntimeException(e);
         }
     }
 
     @Override
     protected void updateItem(Upgrade upgrade, boolean empty) {
-        super.updateItem(upgrade, empty);
+    	super.updateItem(upgrade, empty);
         if (empty || upgrade == null) {
             setText(null);
             setGraphic(null);
             return;
         }
 
-        controller.configurar(upgrade, () -> {
-            if (getListView().getItems().remove(upgrade)) {
-                System.out.println("Comprado: " + upgrade.getNome());
-            }
-        });
+        controller.configurar(upgrade);
 
         setText(null);
         setGraphic(graphic);

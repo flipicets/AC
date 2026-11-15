@@ -26,6 +26,7 @@ public class AutoClicker implements Runnable{
     
     @Override
     public void run() {
+    	System.out.println("ativei");
     	Adrian adrian = Adrian.getInstance();
     	this.attack();
     	Platform.runLater(() -> {
