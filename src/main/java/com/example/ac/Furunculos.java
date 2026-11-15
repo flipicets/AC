@@ -55,7 +55,7 @@ protected int danoFurunculos1(){
 
         return danoTotal;
     }
-    retunr 0;
+    return 0;
 }
 
 protected int danoFurunculos2(){
@@ -69,7 +69,7 @@ protected int danoFurunculos2(){
 
         return danoTotal;
     }
-    retunr 0;
+    return 0;
 }
 
 protected int danoFurunculos3(){
@@ -83,15 +83,8 @@ protected int danoFurunculos3(){
 
         return danoTotal;
     }
-    retunr 0;
+    return 0;
 }
-
-/----------------------------------------------
-
-    @Override
-    protected void diminuirCooldawn(double multiplicador) {
-
-    }
 
 //-------- uprgrades da chance de briga ---------------
 
