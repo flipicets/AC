@@ -1,6 +1,8 @@
 package com.example.ac;
 import java.util.Random;
 
+//teste
+
     public class Furunculos extends from AutoClicker{
         private int cooldown;
 
