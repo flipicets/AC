@@ -42,7 +42,7 @@ public class UpgradeCellController {
     @FXML
     private void comprar() {
         if (this.upgrade != null) {
-            this.upgrade.acao.accept(upgrade);
+            this.upgrade.executar();
         }
     }
 }

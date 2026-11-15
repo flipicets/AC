@@ -15,15 +15,17 @@ public class AutoDamager extends Upgrade{
 			  "kkkkk esse cesar kkkk vai tomando adrian",
 			  "images/cesar_pateta.jpg",
 			  10.0);
-		super.acao = (u) -> {
-			GameState gs = GameState.getInstance();
-			if(gs.getBufunfa().doubleValue() >= u.getPreco()) {
-				gs.passiveDamage += 1;
-				gs.setBufunfa(gs.getBufunfa().doubleValue() - u.preco.doubleValue());
-				super.setPreco(getPreco() + 13);
-			} else {
-				System.out.println("Não há money");
-			}
-		};
 	}
+	
+	@Override
+	public void executar() {
+		GameState gs = GameState.getInstance();
+		if(gs.getBufunfa().doubleValue() >= this.getPreco()) {
+			gs.passiveDamage += 1;
+			gs.setBufunfa(gs.getBufunfa().doubleValue() - this.preco.doubleValue());
+			this.setPreco(getPreco() + 13);
+		} else {
+			System.out.println("Não há money");
+		}
+	};
 }
