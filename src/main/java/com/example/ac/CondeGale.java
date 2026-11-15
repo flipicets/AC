@@ -32,7 +32,7 @@ public class CondeGale extends AutoClicker{
     public void run() {
         try {
             while (true){
-                ataque();
+                adrian.levarDano(ataque());
                 Thread.sleep(cooldown);
             }
         } catch (InterruptedException e) {

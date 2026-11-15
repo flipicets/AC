@@ -18,7 +18,7 @@ public class Mariestelar extends AutoClicker{
 
     @Override
     protected int ataque() {
-        return random.nextInt(20,100)*nivelChuvaE;
+        return random.nextInt(20,100)*(nivelChuvaE*4);
     }
 
     @Override
