@@ -13,6 +13,8 @@
          <children>
             <Label fx:id="nome" layoutX="14.0" layoutY="6.0" prefHeight="17.0" prefWidth="123.0" text="Nome do upgrade" />
             <Label fx:id="descricao" layoutX="14.0" layoutY="23.0" text="Label" />
+            <Label layoutX="254.0" layoutY="6.0" text="Custo" />
+            <Label fx:id="preco" alignment="CENTER" layoutX="226.0" layoutY="23.0" prefHeight="17.0" prefWidth="83.0" text="Label" />
          </children>
       </Pane>
       <Button mnemonicParsing="false" onAction="#comprar" prefHeight="54.0" prefWidth="132.0" text="Comprar" />

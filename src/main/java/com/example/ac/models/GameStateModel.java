@@ -8,6 +8,15 @@ import java.sql.Statement;
 
 import com.example.ac.GameState;
 
+/*
+ * Integração com o banco, mas tá pela metade
+ * 
+ * TODO: - Atualizar a implementação para ela puxar todos os status de dentro do GameState, pq no momento só
+ * 		 tá puxando a 'bufunfa' e a vida do Adrian, então
+ * 
+ * 		 - Criar controller de acesso para que não fique tudo jogado pela Model
+ * */
+
 public class GameStateModel {
 	
 	public GameStateModel() {
@@ -44,8 +53,8 @@ public class GameStateModel {
 	    try (PreparedStatement statement = conn.prepareStatement(sql)) {
 
 	        statement.setInt(1, 1);
-	        statement.setLong(2, GameState.getInstance().getAdrianVida());
-	        statement.setDouble(3, GameState.getInstance().getBufunfa());
+	        statement.setLong(2, GameState.getInstance().getAdrianVida().longValue());
+	        statement.setDouble(3, GameState.getInstance().getBufunfa().doubleValue());
 
 	        statement.executeUpdate();
 

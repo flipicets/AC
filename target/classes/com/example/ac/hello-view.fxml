@@ -8,29 +8,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="633.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
    <children>
-      <AnchorPane prefHeight="635.0" prefWidth="600.0">
+      <AnchorPane prefHeight="691.0" prefWidth="603.0">
          <children>
-            <Label alignment="CENTER" layoutX="-1.0" layoutY="504.0" prefHeight="17.0" prefWidth="600.0" text="PARE DE ABAIXAR MINHAS CALCINHAS">
+            <Label alignment="CENTER" layoutX="1.0" layoutY="639.0" prefHeight="17.0" prefWidth="600.0" text="PARE DE ABAIXAR MINHAS CALCINHAS">
                <font>
                   <Font size="29.0" />
                </font>
             </Label>
             <Label alignment="CENTER" layoutX="42.0" layoutY="14.0" prefHeight="17.0" prefWidth="512.0" text="Vida" />
             <ProgressBar layoutX="25.0" layoutY="45.0" prefHeight="18.0" prefWidth="552.0" progress="1.0" />
-            <Button fx:id="invocarThread" layoutX="254.0" layoutY="110.0" mnemonicParsing="false" onAction="#invocarThread" text="Invocar Thread" />
             <Label fx:id="vida" alignment="CENTER" layoutX="-1.0" layoutY="72.0" prefHeight="17.0" prefWidth="600.0" text="INSIRA VIDA" />
-            <ListView fx:id="listaUpgrades" layoutX="39.0" layoutY="158.0" prefHeight="200.0" prefWidth="526.0" />
-            <Label layoutX="275.0" layoutY="372.0" text="Dinheiro" />
-            <Label fx:id="bufunfa" layoutX="248.0" layoutY="404.0" text="BUFUNFA">
+            <ListView fx:id="listaUpgrades" layoutX="38.0" layoutY="105.0" prefHeight="200.0" prefWidth="526.0" />
+            <Label layoutX="278.0" layoutY="325.0" text="Dinheiro" />
+            <Label fx:id="bufunfa" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="357.0" prefHeight="36.0" prefWidth="600.0" text="BUFUNFA">
                <font>
                   <Font size="25.0" />
                </font>
             </Label>
-            <Button fx:id="addBufunfa_btn" layoutX="251.0" layoutY="453.0" mnemonicParsing="false" onAction="#addBufunfa" text="+ 5000 Bufunfa" />
-            <Button fx:id="save" layoutX="167.0" layoutY="562.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="108.0" text="Salvar" />
-            <Button fx:id="save1" layoutX="327.0" layoutY="562.0" mnemonicParsing="false" onAction="#carregar" prefHeight="25.0" prefWidth="108.0" text="Carregar" />
+            <Button fx:id="addBufunfa_btn" layoutX="254.0" layoutY="406.0" mnemonicParsing="false" onAction="#addBufunfa" text="+ 5000 Bufunfa" />
+            <Button fx:id="save" layoutX="168.0" layoutY="467.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="108.0" text="Salvar" />
+            <Button fx:id="save1" layoutX="328.0" layoutY="467.0" mnemonicParsing="false" onAction="#carregar" prefHeight="25.0" prefWidth="108.0" text="Carregar" />
+            <Button fx:id="farmarAura" layoutX="43.0" layoutY="512.0" mnemonicParsing="false" onAction="#farmarAura" prefHeight="69.0" prefWidth="520.0" text="Farmar Aura" />
          </children>
       </AnchorPane>
    </children>

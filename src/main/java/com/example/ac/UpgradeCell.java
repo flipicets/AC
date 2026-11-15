@@ -6,6 +6,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.ListCell;
 
+/*
+ * Isso é uma implementação para que a lista de upgrades seja interessante
+ * 
+ * basicamente o construtor desse cara vai carregar o fxml da celula
+ * vai transformar o fxml em um nodo que pode ser utilizado e vai,
+ * para cada item que entrar na lista configurar ele para aparecer na UI
+ * aqui não tem muito o que mudar a não, acho que tá bem safe
+ * */
+
 public class UpgradeCell extends ListCell<Upgrade> {
 
     private final Node graphic;
