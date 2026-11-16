@@ -1,39 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
-   <children>
-      <AnchorPane prefHeight="691.0" prefWidth="603.0">
+<!--
+  TELA PRINCIPAL  (dá pra abrir e editar no Scene Builder normalmente)
+
+  +==================================================================+
+  |  TOPO:   "Vida do Adrian" + barra de vida + número da vida       |
+  +=========================================+========================+
+  |  CENTRO (arena):                        |  DIREITA (loja):       |
+  |    - foto do Adrian no meio (clicável)  |    - bufunfa           |
+  |    - fala dele embaixo                  |    - dano por clique   |
+  |    - canvas POR CIMA, onde o Renderer   |    - aba "Loja"        |
+  |      desenha os personagens nas laterais|    - aba "Melhorias"   |
+  +=========================================+========================+
+  |  BAIXO:  Salvar | Carregar | Novo jogo | +5000 (teste) | mensagem|
+  +==================================================================+
+
+  Os fx:id antigos continuam (vida, bufunfa, listaUpgrades, canvas,
+  addBufunfa_btn). Novos: barraVida, adrianImg, fala, danoClique,
+  listaMelhorias, mensagem.
+
+  [TODO GRUPO] o layout foi feito "no olho" porque o desenho do paint não
+  estava junto. Se a ideia era outra disposição, é só arrastar os blocos:
+  a controller não depende da posição de nada, só dos fx:id.
+-->
+<BorderPane prefHeight="720.0" prefWidth="1150.0" style="-fx-background-color: #24243e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
+
+   <!-- ============================ TOPO ============================ -->
+   <top>
+      <VBox alignment="CENTER" spacing="4.0">
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
          <children>
-            <Label alignment="CENTER" layoutX="1.0" layoutY="639.0" prefHeight="17.0" prefWidth="600.0" text="PARE DE ABAIXAR MINHAS CALCINHAS">
+            <Label text="Vida do Adrian" textFill="WHITE">
                <font>
-                  <Font size="29.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="42.0" layoutY="14.0" prefHeight="17.0" prefWidth="512.0" text="Vida" />
-            <ProgressBar layoutX="25.0" layoutY="45.0" prefHeight="18.0" prefWidth="552.0" progress="1.0" />
-            <Label fx:id="vida" alignment="CENTER" layoutX="-1.0" layoutY="72.0" prefHeight="17.0" prefWidth="600.0" text="INSIRA VIDA" />
-            <ListView fx:id="listaUpgrades" layoutX="38.0" layoutY="105.0" prefHeight="200.0" prefWidth="526.0" />
-            <Label layoutX="278.0" layoutY="325.0" text="Dinheiro" />
-            <Label fx:id="bufunfa" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="357.0" prefHeight="36.0" prefWidth="600.0" text="BUFUNFA">
+            <ProgressBar fx:id="barraVida" prefHeight="22.0" prefWidth="1110.0" progress="1.0" style="-fx-accent: #c0392b;" />
+            <Label fx:id="vida" alignment="CENTER" text="INSIRA VIDA" textFill="WHITE">
                <font>
-                  <Font size="25.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="addBufunfa_btn" layoutX="254.0" layoutY="406.0" mnemonicParsing="false" onAction="#addBufunfa" text="+ 5000 Bufunfa" />
-            <Button fx:id="save" layoutX="168.0" layoutY="467.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="108.0" text="Salvar" />
-            <Button fx:id="save1" layoutX="328.0" layoutY="467.0" mnemonicParsing="false" onAction="#carregar" prefHeight="25.0" prefWidth="108.0" text="Carregar" />
-            <Button fx:id="farmarAura" layoutX="43.0" layoutY="512.0" mnemonicParsing="false" onAction="#farmarAura" prefHeight="69.0" prefWidth="520.0" text="Farmar Aura" />
          </children>
-      </AnchorPane>
-      <Canvas fx:id="canvas" height="368.0" width="602.0" />
-   </children>
-</VBox>
+      </VBox>
+   </top>
+
+   <!-- ============================ ARENA ============================ -->
+   <center>
+      <!-- StackPane empilha os filhos: o primeiro fica embaixo, o último em cima.
+           [TODO SPRITE] fundo da arena: trocar a cor abaixo por
+           -fx-background-image: url('images/fundo.png'); quando existir. -->
+      <StackPane maxHeight="540.0" maxWidth="700.0" minHeight="540.0" minWidth="700.0" style="-fx-background-color: #1b1b2f; -fx-background-radius: 8;">
+         <children>
+            <VBox alignment="CENTER" spacing="8.0">
+               <children>
+                  <!-- O clique no Adrian chama farmarAura() na controller -->
+                  <ImageView fx:id="adrianImg" fitHeight="400.0" fitWidth="300.0" onMouseClicked="#farmarAura" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+                  <Label fx:id="fala" alignment="CENTER" text="PARE DE ABAIXAR MINHAS CALCINHAS" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <!-- mouseTransparent = o canvas fica por cima mas não "pega" o clique,
+                 então o clique atravessa e chega na foto do Adrian -->
+            <Canvas fx:id="canvas" height="540.0" mouseTransparent="true" width="700.0" />
+         </children>
+      </StackPane>
+   </center>
+
+   <!-- ============================ LOJA ============================ -->
+   <right>
+      <VBox alignment="TOP_CENTER" prefWidth="440.0" spacing="4.0">
+         <padding>
+            <Insets left="5.0" right="15.0" />
+         </padding>
+         <children>
+            <Label text="Dinheiro" textFill="#c8c8e0" />
+            <Label fx:id="bufunfa" alignment="CENTER" contentDisplay="CENTER" text="BUFUNFA" textFill="#f1c40f">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="danoClique" text="Dano por clique: 1" textFill="#c8c8e0" />
+            <TabPane prefHeight="445.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Loja">
+                     <content>
+                        <ListView fx:id="listaUpgrades" />
+                     </content>
+                  </Tab>
+                  <Tab text="Melhorias">
+                     <content>
+                        <!-- Começa vazia: as melhorias aparecem quando o personagem é comprado -->
+                        <ListView fx:id="listaMelhorias" />
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </right>
+
+   <!-- ============================ BOTÕES ============================ -->
+   <bottom>
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+         <padding>
+            <Insets bottom="12.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+         <children>
+            <Button fx:id="save" mnemonicParsing="false" onAction="#salvar" prefWidth="100.0" text="Salvar" />
+            <Button fx:id="save1" mnemonicParsing="false" onAction="#carregar" prefWidth="100.0" text="Carregar" />
+            <Button mnemonicParsing="false" onAction="#novoJogo" prefWidth="100.0" text="Novo jogo" />
+            <!-- [TODO GRUPO] botão de teste: decidir se fica na versão final -->
+            <Button fx:id="addBufunfa_btn" mnemonicParsing="false" onAction="#addBufunfa" text="+5000 (teste)" />
+            <Label fx:id="mensagem" textFill="#ffd166">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

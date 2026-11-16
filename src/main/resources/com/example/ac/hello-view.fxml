@@ -1,39 +1,144 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!-- os import funcionam que nem no java, cada componente usado aqui embaixo precisa ser importado -->
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1050.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
-   <children>
-      <AnchorPane prefHeight="691.0" prefWidth="603.0">
+<!--
+  tela principal do jogo, é só o DESENHO da tela (o que tem e onde fica), a lógica tá na HelloController
+  dá pra abrir e editar no Scene Builder
+  como liga com o java
+    fx:controller = qual classe controla essa tela (HelloController)
+    fx:id="x"     = vira a variável @FXML x lá na controller
+    onAction="#m" = clicar chama o método m() da controller
+
+  a controller não depende da posição de nada, só dos fx:id, então dá pra arrastar os blocos à vontade
+-->
+
+<!-- BorderPane = layout que divide a tela em 5 regiões (top, center, right, bottom, left), a gente usa 4 -->
+<BorderPane prefHeight="720.0" prefWidth="1150.0" style="-fx-background-color: #24243e;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ac.HelloController">
+
+   <!-- TOPO, a vida do adrian -->
+   <top>
+      <!-- VBox = empilha os filhos um embaixo do outro, padding/Insets = espaço em volta -->
+      <VBox alignment="CENTER" spacing="4.0">
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
          <children>
-            <Label alignment="CENTER" layoutX="1.0" layoutY="639.0" prefHeight="17.0" prefWidth="600.0" text="PARE DE ABAIXAR MINHAS CALCINHAS">
+            <Label text="Vida do Adrian" textFill="WHITE">
                <font>
-                  <Font size="29.0" />
+                  <Font name="System Bold" size="16.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="42.0" layoutY="14.0" prefHeight="17.0" prefWidth="512.0" text="Vida" />
-            <ProgressBar layoutX="25.0" layoutY="45.0" prefHeight="18.0" prefWidth="552.0" progress="1.0" />
-            <Label fx:id="vida" alignment="CENTER" layoutX="-1.0" layoutY="72.0" prefHeight="17.0" prefWidth="600.0" text="INSIRA VIDA" />
-            <ListView fx:id="listaUpgrades" layoutX="38.0" layoutY="105.0" prefHeight="200.0" prefWidth="526.0" />
-            <Label layoutX="278.0" layoutY="325.0" text="Dinheiro" />
-            <Label fx:id="bufunfa" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="357.0" prefHeight="36.0" prefWidth="600.0" text="BUFUNFA">
+            <!-- a barra vermelha, a controller faz o bind dela com a vida do Adrian, -fx-accent é a cor do preenchimento -->
+            <ProgressBar fx:id="barraVida" prefHeight="22.0" prefWidth="1110.0" progress="1.0" style="-fx-accent: #c0392b;" />
+            <!-- o número da vida, o "INSIRA VIDA" nunca aparece pq o bind troca na hora que abre -->
+            <Label fx:id="vida" alignment="CENTER" text="INSIRA VIDA" textFill="WHITE">
                <font>
-                  <Font size="25.0" />
+                  <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="addBufunfa_btn" layoutX="254.0" layoutY="406.0" mnemonicParsing="false" onAction="#addBufunfa" text="+ 5000 Bufunfa" />
-            <Button fx:id="save" layoutX="168.0" layoutY="467.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="108.0" text="Salvar" />
-            <Button fx:id="save1" layoutX="328.0" layoutY="467.0" mnemonicParsing="false" onAction="#carregar" prefHeight="25.0" prefWidth="108.0" text="Carregar" />
-            <Button fx:id="farmarAura" layoutX="43.0" layoutY="512.0" mnemonicParsing="false" onAction="#farmarAura" prefHeight="69.0" prefWidth="520.0" text="Farmar Aura" />
          </children>
-      </AnchorPane>
-      <Canvas fx:id="canvas" height="368.0" width="602.0" />
-   </children>
-</VBox>
+      </VBox>
+   </top>
+
+   <!-- ARENA -->
+   <center>
+      <!-- StackPane = empilha os filhos um EM CIMA do outro, o primeiro fica embaixo e o último em cima
+           falta o fundo da arena, quando tiver é trocar a cor por -fx-background-image: url('images/fundo.png') -->
+      <StackPane maxHeight="540.0" maxWidth="700.0" minHeight="540.0" minWidth="700.0" style="-fx-background-color: #1b1b2f; -fx-background-radius: 8;">
+         <children>
+            <VBox alignment="CENTER" spacing="8.0">
+               <children>
+                  <!-- a foto do adrian, onMouseClicked = clicar nela chama o farmarAura() da controller
+                       a imagem em si a controller coloca no initialize(), preserveRatio = não estica -->
+                  <ImageView fx:id="adrianImg" fitHeight="400.0" fitWidth="300.0" onMouseClicked="#farmarAura" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
+                  <!-- a frase embaixo dele, a controller troca pra "..." quando ele morre -->
+                  <Label fx:id="fala" alignment="CENTER" text="PARE DE ABAIXAR MINHAS CALCINHAS" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+            <!-- o canvas onde o Renderer desenha os personagens e os números de dano
+                 mouseTransparent = fica por cima mas não "pega" o clique, o clique atravessa e chega na foto do adrian -->
+            <Canvas fx:id="canvas" height="540.0" mouseTransparent="true" width="700.0" />
+         </children>
+      </StackPane>
+   </center>
+
+   <!-- LOJA -->
+   <right>
+      <VBox alignment="TOP_CENTER" prefWidth="440.0" spacing="4.0">
+         <padding>
+            <Insets left="5.0" right="15.0" />
+         </padding>
+         <children>
+            <Label text="Dinheiro" textFill="#c8c8e0" />
+            <!-- o número amarelo da bufunfa, a controller faz o bind com o GameState -->
+            <Label fx:id="bufunfa" alignment="CENTER" contentDisplay="CENTER" text="BUFUNFA" textFill="#f1c40f">
+               <font>
+                  <Font name="System Bold" size="28.0" />
+               </font>
+            </Label>
+            <!-- a controller atualiza esse texto no tick() -->
+            <Label fx:id="danoClique" text="Dano por clique: 1" textFill="#c8c8e0" />
+            <!-- TabPane = as abas, tabClosingPolicy UNAVAILABLE = não deixa fechar aba no X -->
+            <TabPane prefHeight="445.0" tabClosingPolicy="UNAVAILABLE">
+               <tabs>
+                  <Tab text="Loja">
+                     <content>
+                        <!-- lista de tudo que dá pra comprar, cada linha é um UpgradeCell (listcell.fxml) -->
+                        <ListView fx:id="listaUpgrades" />
+                     </content>
+                  </Tab>
+                  <Tab text="Melhorias">
+                     <content>
+                        <!-- começa vazia, as melhorias aparecem quando o personagem dono é comprado -->
+                        <ListView fx:id="listaMelhorias" />
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </VBox>
+   </right>
+
+   <!-- BOTÕES -->
+   <bottom>
+      <!-- HBox = coloca os filhos um do lado do outro -->
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+         <padding>
+            <Insets bottom="12.0" left="20.0" right="20.0" top="10.0" />
+         </padding>
+         <children>
+            <!-- cada botão chama o método com o mesmo nome do onAction lá na HelloController -->
+            <Button fx:id="save" mnemonicParsing="false" onAction="#salvar" prefWidth="100.0" text="Salvar" />
+            <Button fx:id="save1" mnemonicParsing="false" onAction="#carregar" prefWidth="100.0" text="Carregar" />
+            <Button mnemonicParsing="false" onAction="#novoJogo" prefWidth="100.0" text="Novo jogo" />
+            <!-- botão de teste que dá bufunfa de graça, decidir se fica na versão final -->
+            <Button fx:id="addBufunfa_btn" mnemonicParsing="false" onAction="#addBufunfa" text="+5000 (teste)" />
+            <!-- o aviso amarelo ("Não há money", "Jogo salvo"...), bind com a mensagem do GameState -->
+            <Label fx:id="mensagem" textFill="#ffd166">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
