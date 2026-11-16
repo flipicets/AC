@@ -49,6 +49,16 @@ public class GameState {
 		this.bufunfa = new SimpleDoubleProperty(bufunfa);
 	}
 
+	private int cliquesPorClique= 1;
+
+
+	public void setCliquesPorClique(int valor){
+		this.cliquesPorClique += 1;
+	}
+
+	public int getCliquesPorClique(){
+		return this.cliquesPorClique;
+	}
 	// devolve o único GameState, quase toda classe do projeto usa
 	public static GameState getInstance() {
 		return gs;
@@ -116,6 +126,12 @@ public class GameState {
 		return dano;
 	}
 
+	public void zaralharCliques(int vezes){
+		for(int i = 0; i < vezes; i++){
+			clicar();
+		}
+	}
+
 	// dano final do clique = base x multiplicador
 	// usado no clicar() e no label "Dano por clique" da HelloController
 	public double getDanoPorClique() {
@@ -138,6 +154,7 @@ public class GameState {
 		passiveDamage = 0.0;
 		danoClique = 1.0;
 		multiplicadorClique = 1.0;
+		cliquesPorClique = 1;
 		restoDano = 0.0;
 		Adrian.getInstance().resetar();
 	}
@@ -192,6 +209,11 @@ public class GameState {
 	public void setMultiplicadorClique(double multiplicadorClique) {
 		this.multiplicadorClique = Math.max(1, multiplicadorClique);
 	}
+
+	public void setDobrarMultiplicador(int nivel){
+		this.multiplicadorClique *= nivel;
+	}
+
 
 	// retorna a Property da mensagem, a HelloController usa no bind do label de aviso
 	public StringProperty mensagemProperty() {

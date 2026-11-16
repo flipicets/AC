@@ -165,6 +165,8 @@ public class HelloController {
         // repara que a variável é do tipo da mãe (Upgrade / AutoClicker) e o objeto é da filha
         Upgrade cliqueDano = new UpgradeDanoClique();
         Upgrade cliqueMult = new UpgradeMultiplicadorClique();
+        Upgrade cliqueZaralha = new UpgradeZaralhaCliques();
+        Upgrade dobrarMulti = new UpgradeMultiplicadorQntdClique();
         Upgrade teste = new TesteUpgrade();
         Upgrade ad = new AutoDamager();
         AutoClicker f = new Furunculo();
@@ -175,6 +177,8 @@ public class HelloController {
         // a ordem aqui é a ordem que aparece na loja, e o texto é o id que vai pro banco
         registrarUpgrade("clique_dano", cliqueDano);
         registrarUpgrade("clique_mult", cliqueMult);
+        registrarUpgrade("clique_zaralha",cliqueZaralha );
+        registrarUpgrade("dobra_mult", dobrarMulti );
         registrarUpgrade("ad", ad);
         registrarUpgrade("teste", teste);
         registrarAutoClicker("f", f);
@@ -372,8 +376,19 @@ public class HelloController {
         }
 
         // GameState faz o dano e devolve quanto foi, o Renderer mostra o número subindo
-        double dano = GameState.getInstance().clicar();
-        renderer.adicionarTextoDeClique("-" + Formatador.numero(dano));
+        //bloco de código antes de ter o upgrade de zaralhar cliques
+
+        //double dano = GameState.getInstance().clicar();
+        //renderer.adicionarTextoDeClique("-" + Formatador.numero(dano));
+
+        GameState gs = GameState.getInstance();
+       // double danoTotal = 0;
+
+        for (int i = 0; i < gs.getCliquesPorClique(); i++) {
+            double dano = gs.clicar();
+            renderer.adicionarTextoDeClique("-" + Formatador.numero(dano));
+        }
+        //renderer.adicionarTextoDeClique("-" + Formatador.numero(danoTotal));
 
         // "soquinho", a foto encolhe pra 94% e volta pro tamanho normal em 80 ms
         ScaleTransition soco = new ScaleTransition(Duration.millis(80), adrianImg);

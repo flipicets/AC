@@ -21,7 +21,7 @@ public class UpgradeDanoClique extends Upgrade {
 	public UpgradeDanoClique() {
 		super("AAAIIAIIII IAIAIII QUE DOOOORRRRR",
 				"+1 de dano em cada clique",
-				"images/cliqueDanoIcone.png",
+				"images/clickDano1.png",
 				20.0,
 				null);
 	}
@@ -33,5 +33,11 @@ public class UpgradeDanoClique extends Upgrade {
 		GameState gs = GameState.getInstance();
 		gs.setDanoClique(gs.getDanoClique() + DANO_POR_NIVEL);
 		this.setPreco(getPreco() * CRESCIMENTO_DO_PRECO);
+
+		if (getNivel()< 60 & getNivel() >=26) {//imagem começa na mais básica devido ao construtor
+			this.setImagem("images/clickDano2.png");
+		}else if ( getNivel() >=61){
+			this.setImagem("images/clickDano3.png");
+		}
 	}
 }

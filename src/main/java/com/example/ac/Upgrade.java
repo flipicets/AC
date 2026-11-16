@@ -232,4 +232,8 @@ public abstract class Upgrade {
         this.sprite = sprite;
     }
 
+    public void setImagem(String imagem){
+        this.imagem = imagem;
+    }
+
 }

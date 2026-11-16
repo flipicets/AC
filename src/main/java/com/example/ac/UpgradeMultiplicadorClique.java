@@ -19,7 +19,7 @@ public class UpgradeMultiplicadorClique extends Upgrade {
 	public UpgradeMultiplicadorClique() {
 		super("Mouse Gamer",
 				"Dobra o dano do clique",
-				"images/cliqueMultIcone.png",
+				"images/clickMult1.png",
 				500.0,
 				null);
 	}
@@ -32,5 +32,11 @@ public class UpgradeMultiplicadorClique extends Upgrade {
 		GameState gs = GameState.getInstance();
 		gs.setMultiplicadorClique(gs.getMultiplicadorClique() * MULTIPLICADOR_POR_NIVEL);
 		this.setPreco(getPreco() * CRESCIMENTO_DO_PRECO);
+
+		if (getNivel() < 60 & getNivel() >=26) {
+			this.setImagem("images/clickMult2.png");
+		} else if ( getNivel() >=61){
+			this.setImagem("images/clickMult3.png");
+		}
 	}
 }
