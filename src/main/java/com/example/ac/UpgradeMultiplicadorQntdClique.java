@@ -8,7 +8,7 @@ public class UpgradeMultiplicadorQntdClique extends Upgrade{
     public UpgradeMultiplicadorQntdClique() {
         super("Dedo de Midas",
                 "Dobra a quantidade possuida de cliques",
-                "images/clickPerSec1.png",
+                "images/toqueDeMidas.png",
                 3000.0,
                 null);
     }

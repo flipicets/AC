@@ -53,7 +53,7 @@ public class HelloController {
     private static final long PASSO_EM_MS = 100;
     private static final double DT = PASSO_EM_MS / 1000.0;
 
-    private static final String FALA_PADRAO = "PARE DE ABAIXAR MINHAS CALCINHAS";
+    private static final String FALA_PADRAO = "oi gente eu sou o andrian";
 
     // tudo com @FXML é um componente da tela, o JavaFX preenche sozinho procurando o fx:id com o mesmo nome no fxml
     @FXML Label vida;                 // texto da vida embaixo da barra

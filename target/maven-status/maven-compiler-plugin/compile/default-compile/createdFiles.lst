@@ -8,7 +8,9 @@ com\example\ac\UpgradeMultiplicadorClique.class
 com\example\ac\TextoFlutuante.class
 com\example\ac\models\GameStateModel.class
 com\example\ac\Maristelar.class
+com\example\ac\UpgradeZaralhaCliques.class
 com\example\ac\MelhoriaCooldown.class
+com\example\ac\UpgradeMultiplicadorQntdClique.class
 com\example\ac\Adrian.class
 com\example\ac\HelloApplication.class
 com\example\ac\BufunfaInsuficienteException.class

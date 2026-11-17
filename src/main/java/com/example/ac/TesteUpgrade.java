@@ -13,11 +13,11 @@ public class TesteUpgrade extends Upgrade{
 	// construtor, super manda tudo pro Upgrade (nome, descrição, ícone da loja, preço inicial e o sprite da arena)
 	// quem dá new nele é a HelloController no initialize()
 	public TesteUpgrade() {
-		super("Link furry",
+		super("Ursao",
 				"furry é tudo rico pqp mais dinero",
-				"images/link_pateta.png",
+				"images/ursao.png",
 				15.0,
-				new Renderable("images/link_pateta-nobg.png", 130, 130));
+				new Renderable("images/ursao.png", 130, 130));
 	}
 
 	// o efeito da compra, quem chama é o Upgrade.comprar() depois de cobrar
