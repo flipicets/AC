@@ -5,7 +5,7 @@ import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 
 /*
- * cuida só da VIDA do Adrian (a barra vermelha lá em cima).
+ * cuida só da VIDA do Adrian (a barra vermelha lá em cima)
  * Todo dano do jogo termina aqui, passando antes pelo GameState.
  *
  * é Singleton ou seja só existe UM Adrian no programa, mais ninguem dá new,
