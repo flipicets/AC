@@ -33,9 +33,9 @@ public class UpgradeMultiplicadorClique extends Upgrade {
 		gs.setMultiplicadorClique(gs.getMultiplicadorClique() * MULTIPLICADOR_POR_NIVEL);
 		this.setPreco(getPreco() * CRESCIMENTO_DO_PRECO);
 
-		if (getNivel() < 60 & getNivel() >=26) {
+		if (getNivel() < 19 & getNivel() >=10) {
 			this.setImagem("images/clickMult2.png");
-		} else if ( getNivel() >=61){
+		} else if ( getNivel() >=20){
 			this.setImagem("images/clickMult3.png");
 		}
 	}

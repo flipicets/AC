@@ -34,9 +34,9 @@ public class UpgradeDanoClique extends Upgrade {
 		gs.setDanoClique(gs.getDanoClique() + DANO_POR_NIVEL);
 		this.setPreco(getPreco() * CRESCIMENTO_DO_PRECO);
 
-		if (getNivel()< 60 & getNivel() >=26) {//imagem começa na mais básica devido ao construtor
+		if (getNivel()< 50 & getNivel() >=25) {//imagem começa na mais básica devido ao construtor
 			this.setImagem("images/clickDano2.png");
-		}else if ( getNivel() >=61){
+		}else if ( getNivel() >=51){
 			this.setImagem("images/clickDano3.png");
 		}
 	}
